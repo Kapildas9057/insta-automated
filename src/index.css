@@ -1,0 +1,40 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, system-ui, Arial; background: #0f172a; color: #e2e8f0; min-width: 1280px; }
+.app { padding: 16px; }
+.card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
+.header { display:flex; justify-content:space-between; align-items:center; padding:16px; margin-bottom:12px; }
+.titleWrap { display:flex; gap:12px; align-items:center; }
+.titleWrap h1 { margin:0; }
+.titleWrap p { margin:4px 0 0; color:#94a3b8; font-size:14px; }
+.liveBadge { display:flex; gap:8px; align-items:center; background:#0b3b2e; color:#86efac; border:1px solid #15803d; padding:8px 12px; border-radius:999px; }
+.dispatchBanner { background:#14532d; border:1px solid #15803d; padding:10px 14px; border-radius:10px; margin-bottom:12px; color:#dcfce7; }
+.statBar { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:12px; }
+.statCard { padding:12px; }
+.statCard h3 { margin:0 0 8px; color:#94a3b8; font-size:14px; }
+.statCard p { margin:0; font-size:20px; }
+.statCard strong { color:#22d3ee; }
+.dashboard { display:flex; gap:12px; }
+.panel { padding:12px; height:70vh; overflow:auto; }
+.description { color:#cbd5e1; }
+.btn { margin-top:8px; background:#0ea5e9; border:none; color:#fff; padding:10px 12px; border-radius:8px; cursor:pointer; }
+.btn:disabled { opacity:.6; cursor:not-allowed; }
+.dispatchBtn { background:#15803d; }
+.triageBox { margin-top:12px; border-top:1px solid #334155; padding-top:10px; }
+.critical { color:#dc2626; }
+.listWrap { display:flex; flex-direction:column; gap:10px; }
+.ambulanceCard { width:100%; text-align:left; background:#0f172a; border:1px solid #334155; color:#e2e8f0; border-radius:10px; padding:10px; cursor:pointer; }
+.ambulanceCard.selected { outline:2px solid #22d3ee; }
+.ambTop { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.ambTop h3 { margin:0; font-size:14px; }
+.type { font-size:12px; padding:4px 8px; border-radius:999px; }
+.type.als { background:#7c3aed33; color:#c4b5fd; }
+.type.bls { background:#0284c733; color:#7dd3fc; }
+.type.driveronly { background:#6b728033; color:#d1d5db; }
+.available { color:#16a34a; }
+.dispatched { color:#22c55e; }
+.busy { color:#94a3b8; }
+.mapPanel { padding-bottom:8px; }
+.map { height: calc(70vh - 48px); border-radius: 10px; }
+.incidentPulse { width:18px; height:18px; border-radius:50%; background:#dc2626; box-shadow:0 0 0 0 rgba(220,38,38,.7); animation:pulse 1.5s infinite; border:2px solid #fff; }
+@keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(220,38,38,.7);} 70%{ box-shadow:0 0 0 15px rgba(220,38,38,0);} 100%{ box-shadow:0 0 0 0 rgba(220,38,38,0);} }
