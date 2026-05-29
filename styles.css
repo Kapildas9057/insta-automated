@@ -1,0 +1,392 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --panel: rgba(9, 22, 39, 0.92);
+  --panel-border: rgba(148, 163, 184, 0.18);
+  --text: #eef6ff;
+  --muted: #9fb0c5;
+  --accent: #38bdf8;
+  --danger: #fb7185;
+  --route: #22d3ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 75% 12%, rgba(56, 189, 248, 0.2), transparent 30rem),
+    linear-gradient(135deg, #08111f 0%, #0f172a 48%, #111827 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.dispatch-shell {
+  width: min(100%, 1640px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(1rem, 2.2vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: stretch;
+}
+
+.incident-panel {
+  min-width: 0;
+  align-self: stretch;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  border: 1px solid var(--panel-border);
+  border-radius: 30px;
+  background: var(--panel);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+  overflow-wrap: anywhere;
+}
+
+.brand-row {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: clamp(1.5rem, 4vw, 3.5rem);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.brand-row p {
+  margin: 0;
+}
+
+.status-pulse {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse 1.8s infinite;
+}
+
+h1 {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(2.35rem, 5vw, 5.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.08em;
+}
+
+.summary {
+  margin: 1.35rem 0 1.6rem;
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
+  line-height: 1.65;
+}
+
+.call-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+.call-card > div,
+.route-details {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.call-card > div {
+  padding: 1rem;
+}
+
+.eyebrow,
+.detail-row span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.call-card strong {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: clamp(1.35rem, 2vw, 2.1rem);
+}
+
+.priority {
+  color: var(--danger);
+}
+
+.route-details {
+  padding: 1rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.detail-row:first-child {
+  padding-top: 0;
+}
+
+.detail-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.detail-row strong {
+  text-align: right;
+}
+
+.dispatch-button {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  color: #04111f;
+  background: linear-gradient(135deg, #67e8f9, #38bdf8);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 20px 45px rgba(56, 189, 248, 0.25);
+}
+
+.map-hero {
+  position: relative;
+  min-height: calc(100vh - clamp(2rem, 4.4vw, 4rem));
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  border-radius: 34px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 21%, rgba(251, 113, 133, 0.34), transparent 10rem),
+    radial-gradient(circle at 15% 76%, rgba(34, 211, 238, 0.25), transparent 14rem),
+    linear-gradient(145deg, rgba(8, 47, 73, 0.82), rgba(15, 23, 42, 0.95));
+  box-shadow: inset 0 0 90px rgba(14, 165, 233, 0.12), 0 28px 90px rgba(0, 0, 0, 0.42);
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.38;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+    linear-gradient(35deg, transparent 46%, rgba(148, 163, 184, 0.13) 47%, rgba(148, 163, 184, 0.13) 49%, transparent 50%);
+  background-size: 58px 58px, 58px 58px, 210px 160px;
+}
+
+.neighborhood {
+  position: absolute;
+  z-index: 2;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(226, 232, 240, 0.14);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.58);
+  color: rgba(226, 232, 240, 0.78);
+  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.n1 { left: 14%; top: 20%; }
+.n2 { right: 28%; top: 13%; }
+.n3 { right: 10%; top: 30%; }
+.n4 { left: 31%; bottom: 17%; }
+
+.route-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.route-shadow,
+.route-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.route-shadow {
+  stroke: rgba(8, 13, 24, 0.72);
+  stroke-width: 34;
+}
+
+.route-line {
+  stroke: var(--route);
+  stroke-width: 15;
+  stroke-dasharray: 26 20;
+  filter: drop-shadow(0 0 18px rgba(34, 211, 238, 0.7));
+  animation: route-flow 1.2s linear infinite;
+}
+
+.hospital-marker circle {
+  fill: #0f766e;
+  stroke: #99f6e4;
+  stroke-width: 6;
+}
+
+.hospital-marker text {
+  fill: #ecfeff;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.incident-marker circle {
+  fill: rgba(190, 18, 60, 0.92);
+  stroke: #fecdd3;
+  stroke-width: 6;
+  animation: marker-alert 1.3s ease-in-out infinite;
+}
+
+.incident-marker path {
+  fill: #fff1f2;
+}
+
+.ambulance-unit {
+  offset-path: path("M126 522 C210 452 252 430 334 414 C446 392 432 278 548 270 C676 260 704 178 842 142");
+  offset-rotate: auto;
+  animation: ambulance-drive 7s ease-in-out infinite;
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.45));
+}
+
+.vehicle-body,
+.vehicle-cab {
+  fill: #f8fafc;
+  stroke: #0f172a;
+  stroke-width: 3;
+}
+
+.vehicle-window {
+  fill: #7dd3fc;
+}
+
+.vehicle-cross {
+  stroke: #e11d48;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.vehicle-light {
+  fill: #ef4444;
+  animation: siren 0.55s alternate infinite;
+}
+
+.wheel {
+  fill: #0f172a;
+  stroke: #cbd5e1;
+  stroke-width: 2;
+}
+
+.map-overlay {
+  position: absolute;
+  right: clamp(1rem, 2vw, 1.6rem);
+  bottom: clamp(1rem, 2vw, 1.6rem);
+  z-index: 3;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  border-radius: 22px;
+  background: rgba(4, 12, 24, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.map-overlay span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.map-overlay strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: clamp(1rem, 1.3vw, 1.35rem);
+}
+
+@keyframes pulse {
+  70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@keyframes route-flow {
+  to { stroke-dashoffset: -46; }
+}
+
+@keyframes ambulance-drive {
+  0% { offset-distance: 0%; }
+  12% { offset-distance: 0%; }
+  78% { offset-distance: 100%; }
+  100% { offset-distance: 100%; }
+}
+
+@keyframes marker-alert {
+  50% { r: 39; opacity: 0.72; }
+}
+
+@keyframes siren {
+  from { fill: #ef4444; filter: drop-shadow(0 0 2px #ef4444); }
+  to { fill: #38bdf8; filter: drop-shadow(0 0 8px #38bdf8); }
+}
+
+@media (max-width: 920px) {
+  .dispatch-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .incident-panel {
+    order: 2;
+  }
+
+  .map-hero {
+    order: 1;
+    min-height: 62vh;
+  }
+
+  h1 {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 560px) {
+  .dispatch-shell {
+    padding: 0.75rem;
+  }
+
+  .incident-panel,
+  .map-hero {
+    border-radius: 24px;
+  }
+
+  .call-card {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-row {
+    display: block;
+  }
+
+  .detail-row strong {
+    display: block;
+    margin-top: 0.35rem;
+    text-align: left;
+  }
+}
